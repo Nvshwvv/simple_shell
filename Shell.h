@@ -38,77 +38,78 @@
 
 extern char environ;
 
-/
- * struct liststr - linked lists
+/**
+ *struct liststr - linked lists
  * @num: the num field
  * @str: string
  * @next: pointing to next node
 */
 typedef struct liststr
 {
-    int num;
-    char *str;
-    struct liststr *next;
+	int num;
+	char *str;
+	struct liststr *next;
 } list_t;
 
 
 
-/
-* struct information - args pass to functions to use it
-* @arg: arguments
-* @argv: argument vector
-* @path: str path for current cmd
-* @line_count: err count
-* @argc: arguments counter
-* @err_num: err code for exit()s
-* @histcount: history lines counter
-* @readfd: read line input 
-* @cmd_buf_type: ||, &&, ; 
-* @cmd_buf: address of pointer 
-* @status: the return status 
-* @env_changed: if environ was changed 
-* @alias: alias node
-* @history: history node
-* @environ: custum modified copy of environ 
-* @env: linked list local cpy of environ 
-* @fname: programm filename
-* @linecount_flag: if on count this line of input
+/**
+ *struct information - args pass to functions to use it
+ * @arg: arguments
+ * @argv: argument vector
+ * @path: str path for current cmd
+ * @line_count: err count
+ * @argc: arguments counter
+ * @err_num: err code for exit()s
+ * @histcount: history lines counter
+ * @readfd: read line input
+ * @cmd_buf_type: ||, &&, ;
+ * @cmd_buf: address of pointer
+ * @status: the return status
+ * @env_changed: if environ was changed
+ * @alias: alias node
+ * @history: history node
+ * @environ: custum modified copy of environ
+ * @env: linked list local cpy of environ
+ * @fname: programm filename
+ * @linecount_flag: if on count this line of input
 */
 
 typedef struct information
 {
-    char *arg;
-    char **argv;
-    char *path;
-    char argc;
-    unsigned int line_count;
-    int err_num;
-    int linecount_flag;
-    char *fname;
-    list_t *env;
-    list_t *history;
-    list_t *alias;
-    char **environ;
-    int env_changed;
-    int status;
+	char *arg;
+	char **argv;
+	char *path;
+	char argc;
+	unsigned int line_count;
+	int err_num;
+	int linecount_flag;
+	char *fname;
+	list_t *env;
+	list_t *history;
+	list_t *alias;
+	char **environ;
+	int env_changed;
+	int status;
 
-    char **cmd_buf; /* ptr to cmd ; chain buffer, memory mangment*/
-    int cmd_buf_type;
-    int readfd;
-    int histcount;
+	char **cmd_buf; /* ptr to cmd ; chain buffer, memory mangment*/
+	int cmd_buf_type;
+	int readfd;
+	int histcount;
 } import_t;
 
-#define IMPORT_INIT {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0}
+#define IMPORT_INIT {NULL, NULL, NULL, 0, 0, 0, 0, \
+	NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0}
 
-/*
-* struct builtin - builtin string and related functions 
-* @type: the builtin cmd flag 
-* @func: the function of all 
+/**
+ *struct builtin - builtin string and related functions
+ * @type: the builtin cmd flag
+ * @func: the function of all
 */
-typedef struct builtin 
+typedef struct builtin
 {
-    char *type;
-    int (*func) (import_t *);
+	char *type;
+	int (*func)(import_t *);
 } biltin_table;
 
 /* PROTOTYPES OF ALL FUNCTIONS */
@@ -138,17 +139,17 @@ char **strtow2(char *, char);
 /* function that deal with a memory */
 /* the first file */
 char *_memset(char *, char, unsigned int);
-void ffree(char );
+void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 /* the seconed file */
-int bfee(void );
+int bfree(void **);
 
 /* function we need during the process*/
 /* first file */
 int interactive(import_t *);
 int is_delim(char, char *);
 int _isalpha(int);
-int _atoi(char *):
+int _atoi(char *);
 
 /* the seconed file */
 int _erratoi(char *);
@@ -159,11 +160,11 @@ void remove_comment(char *);
 
 /* linked lists that we need */
 /* the first file */
-list_t *add_node(list_t , const char *, int);
-list_t *add_node_end(list_t , const char *, int);
+list_t *add_node(list_t *, const char *, int);
+list_t *add_node_end(list_t *, const char *, int);
 size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t , unsigned int);
-void free_list(list_t );
+int delete_node_at_index(list_t *, unsigned int);
+void free_list(list_t *);
 
 /* the second file */
 size_t list_len(const list_t *);
@@ -181,7 +182,7 @@ int _putsfd(char *strs, int fd);
 
 /* import struct function */
 void clear_import(import_t *);
-void set_import(import_t *, char );
+void set_import(import_t *, char *);
 void free_import(import_t *, int);
 
 /* making a enviroment */
@@ -220,7 +221,7 @@ int is_chain(import_t *, char *, size_t *);
 int replace_string(char *, char *);
 int replace_vars(import_t *);
 int replace_alias(import_t *);
-void check_chain(import_t *, char *, size_t *, size_t , size_t );
+void check_chain(import_t *, char *, size_t *, size_t *, size_t *);
 
 /* file.io functions*/
 char *get_history_file(import_t *import);
@@ -230,17 +231,17 @@ int build_history_list(import_t *import, char *buf, int linecount);
 int renumber_history(import_t *import);
 
 /* loopsh files*/
- int loopsh(char );
+int loopsh(char *);
 
 /* getline module*/
 ssize_t get_input(import_t *);
-int _getline(import_t *, char , size_t *);
+int _getline(import_t *, char *, size_t *);
 void signhandler(int);
 
 /* hsh */
-int hsh(import_t *, char );
+int hsh(import_t *, char *);
 int find_builtin(import_t *);
 void find_cmd(import_t *);
-void fork_cmd(import_t *); 
+void fork_cmd(import_t *);
 
 #endif
