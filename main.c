@@ -6,7 +6,7 @@
  * @av: argument vector
  * Return: 0 or 1 success or failier
 */
-int main(int ac, int **av)
+int main(int ac, char **av)
 {
 	import_t import[] = { IMPORT_INIT };
 	int fd = 2;

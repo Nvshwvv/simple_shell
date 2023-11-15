@@ -8,12 +8,12 @@
 */
 int is_cmd(import_t *import, char *path)
 {
-	struct stat, st;
+	struct stat st;
 
 	(void)import;
 	if (!path || stat(path, &st))
 		return (0);
-	if (st.st_mode & S_IFRG)
+	if (st.st_mode & S_IFREG)
 	{
 		return (1);
 	}
