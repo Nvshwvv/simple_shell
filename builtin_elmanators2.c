@@ -22,7 +22,7 @@ int unset_alias(import_t *import, char *str)
 	char *n, c;
 	int ret;
 
-	n = _strchr(str, '-');
+	n = _strchr(str, '=');
 	if (!n)
 		return (1);
 	c = *n;
@@ -45,7 +45,7 @@ int set_alias(import_t *import, char *str)
 	p = _strchr(str, '=');
 	if (!p)
 		return (1);
-	if (!++p)
+	if (!*++p)
 		return (unset_alias(import, str));
 
 	unset_alias(import, str);
@@ -63,11 +63,11 @@ int print_alias(list_t *node)
 
 	if (node)
 	{
-		n = _strchr(node->'=');
+		n = _strchr(node->str, '=');
 		for (s = node->str; s <= n; s++)
 			_putchar(*s);
 		_putchar('\'');
-		_puts(p + 1);
+		_puts(n + 1);
 		_puts("'\n");
 		return (0);
 	}
@@ -97,7 +97,7 @@ int _myalias(import_t *import)
 	for (i = 1; import->argv[i]; i++)
 	{
 		n = _strchr(import->argv[i], '=');
-		if (p)
+		if (n)
 			set_alias(import, import->argv[i]);
 		else
 			print_alias(node_starts_with(import->alias, import->argv[i], '='));

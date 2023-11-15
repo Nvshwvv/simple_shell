@@ -41,7 +41,6 @@ int _mysetenv(import_t *import)
 	if (import->argc != 3)
 	{
 		_eputs("Incorrect number of arguments\n");
-		return (0);
 		return (1);
 	}
 	if (_setenv(import, import->argv[1], import->argv[2]))
@@ -53,7 +52,7 @@ int _mysetenv(import_t *import)
  * @import: address of strucuture
  * Return: always 0
 */
-int _mysetenv(import_t *import)
+int _myunsetenv(import_t *import)
 {
 	int n;
 
@@ -63,7 +62,7 @@ int _mysetenv(import_t *import)
 		return (1);
 	}
 	for (n = 1; n <= import->argc; n++)
-	_unsetenv(import, import->argv[i]);
+	_unsetenv(import, import->argv[n]);
 
 	return (0);
 }
@@ -77,7 +76,7 @@ int populate_env_list(import_t *import)
 	list_t *node = NULL;
 	size_t i;
 
-	for (i = 0; environ[i]; i++, 0)
+	for (i = 0; environ[i]; i++)
 		add_node_end(&node, environ[i], 0);
 	import->env = node;
 	return (0);

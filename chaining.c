@@ -61,7 +61,7 @@ void check_chain(import_t *import, char *buf, size_t *pos, size_t i, size_t ln)
 			j = ln;
 		}
 	}
-	*p = j;
+	*pos = j;
 }
 /**
  * replace_alias - replace an alias on the tokinized string
@@ -113,11 +113,11 @@ int replace_vars(import_t *import)
 		}
 		if (!_strcmp(import->argv[i], "$$"))
 		{
-			replace_string(&(import->argv[i],
-						_strdup(convert_number(getpid(), 10, 0))));
+			replace_string(&(import->argv[i]),
+						_strdup(convert_number(getpid(), 10, 0)));
 			continue;
 		}
-		node + node_starts_with(import->env, &import->argv[i][1], '=');
+		node = node_starts_with(import->env, &import->argv[i][1], '=');
 		if (node)
 		{
 			replace_string(&(import->argv[i]),
@@ -136,7 +136,7 @@ int replace_vars(import_t *import)
  * @new: the new str
  * Return: 1 or 0
 */
-int replace_string(char *old, char *new)
+int replace_string(char **old, char *new)
 {
 	free(*old);
 	*old = new;

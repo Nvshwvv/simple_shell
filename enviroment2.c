@@ -30,7 +30,7 @@ int _unsetenv(import_t *import, char *var)
 	while (node)
 	{
 		n = starts_with(node->str, var);
-		if (n && *n == '-')
+		if (n && *n == '=')
 		{
 			import->env_changed = delete_node_at_index(&(import->env), i);
 			i = 0;

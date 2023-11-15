@@ -26,7 +26,7 @@ int _putchar(char n)
 	static int l;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (n == BUF_FLUSH  l > WRITE_BUF_SIZE)
+	if (n == BUF_FLUSH || l > WRITE_BUF_SIZE)
 	{
 		write(1, buf, l);
 		l = 0;
@@ -46,7 +46,7 @@ char *_strcpy(char *desti, char *srcs)
 {
 	int l = 0;
 
-	if (desti == srcs  srcs == 0)
+	if (desti == srcs || srcs == 0)
 		return (desti);
 	while (srcs[l])
 	{

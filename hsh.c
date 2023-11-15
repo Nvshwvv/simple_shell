@@ -122,7 +122,7 @@ void fork_cmd(import_t *import)
 	pid_t child_pid;
 
 	child_pid = fork();
-	if (child_pid == 0)
+	if (child_pid == -1)
 	{
 		perror("Error");
 		return;
@@ -142,7 +142,7 @@ void fork_cmd(import_t *import)
 		wait(&(import->status));
 		if (WIFEXITED(import->status))
 		{
-			import->status = WIFEXITED(import->status);
+			import->status = WEXITSTATUS(import->status);
 			if (import->status == 126)
 				print_error(import, "Permission denied\n");
 		}

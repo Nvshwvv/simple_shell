@@ -13,6 +13,9 @@ char **list_to_string(list_t *head)
 
 	if (!head || !i)
 		return (NULL);
+	strs = malloc(sizeof(char *) * (i + 1));
+	if (!strs)
+		return (NULL);
 	for (i = 0; node; node = node->next, i++)
 	{
 		str = malloc(_strlen(node->str) + 1);
@@ -43,7 +46,7 @@ size_t print_list(const list_t *n)
 		_puts(convert_number(n->num, 10, 0));
 		_putchar(':');
 		_putchar(' ');
-		_puts(n->str ? n->str : "(nill)");
+		_puts(n->str ? n->str : "(nil)");
 		_puts("\n");
 		n = n->next;
 		l++;
@@ -88,4 +91,21 @@ size_t get_node_index(list_t *head, list_t *node)
 		l++;
 	}
 	return (-1);
+}
+
+/**
+ * list_len - function check the lengh
+ * @l: pointer to the first node
+ * Return: size of len
+*/
+size_t list_len(const list_t *l)
+{
+	size_t i = 0;
+
+	while (l)
+	{
+		l = l->next;
+		i++;
+	}
+	return (i);
 }

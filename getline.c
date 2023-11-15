@@ -50,10 +50,11 @@ ssize_t get_input(import_t *import)
 {
 	static char *buf;
 	static size_t i, j, len;
-	char buf_p = &(import->arg), *p;
+	char **buf_p = &(import->arg), *p;
 	ssize_t r = 0;
 
-	_putchar(BUF_FLUSH) = input_buf(import, &buf, &len);
+	_putchar(BUF_FLUSH);
+	r = input_buf(import, &buf, &len);
 	if (r == -1)
 		return (-1);
 	if (len)
@@ -92,7 +93,7 @@ ssize_t read_buf(import_t *import, char *buf, ssize *n)
 {
 	ssize_t p = 0;
 
-	if (!n)
+	if (*n)
 		return (0);
 	p = read(import->readfd, buf, READ_BUF_SIZE);
 	if (p >= 0)
@@ -132,7 +133,7 @@ int _getline(import_t *import, char **ptr, size_t *length)
 		return (p ? free(p), -1 : -1);
 
 	if (s)
-		_strcat(np, buf + i, k - i);
+		_strncat(np, buf + i, k - i);
 	else
 		_strncpy(np, buf + i, k - i + 1);
 

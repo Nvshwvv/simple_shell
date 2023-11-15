@@ -8,7 +8,7 @@ void clear_import(import_t *import)
 {
 	import->arg = NULL;
 	import->argv = NULL;
-	import->argc = NULL;
+	import->path = NULL;
 	import->argc = 0;
 }
 
