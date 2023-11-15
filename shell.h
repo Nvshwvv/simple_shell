@@ -36,7 +36,7 @@
 #define HIST_FILE ".simple_shell_history"
 #define HIST_MAX  4096
 
-extern char environ;
+extern char **environ;
 
 /**
  *struct liststr - linked lists
@@ -160,11 +160,11 @@ void remove_comment(char *);
 
 /* linked lists that we need */
 /* the first file */
-list_t *add_node(list_t *, const char *, int);
-list_t *add_node_end(list_t *, const char *, int);
+list_t *add_node(list_t **, const char *, int);
+list_t *add_node_end(list_t **, const char *, int);
 size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t *, unsigned int);
-void free_list(list_t *);
+int delete_node_at_index(list_t **, unsigned int);
+void free_list(list_t **);
 
 /* the second file */
 size_t list_len(const list_t *);
@@ -182,7 +182,7 @@ int _putsfd(char *strs, int fd);
 
 /* import struct function */
 void clear_import(import_t *);
-void set_import(import_t *, char *);
+void set_import(import_t *, char **);
 void free_import(import_t *, int);
 
 /* making a enviroment */
@@ -207,9 +207,6 @@ int _myhelp(import_t *);
 /* the second file*/
 int _myhistory(import_t *);
 int _myalias(import_t *);
-int unset_alias(import_t *, char *);
-int set_alias(import_t *, char *);
-int print_alias(list_t *);
 
 /* handle the path */
 int is_cmd(import_t *, char *);
@@ -218,10 +215,10 @@ char *dup_chars(char *, int, int);
 
 /* chainig files */
 int is_chain(import_t *, char *, size_t *);
-int replace_string(char *, char *);
+int replace_string(char **, char *);
 int replace_vars(import_t *);
 int replace_alias(import_t *);
-void check_chain(import_t *, char *, size_t *, size_t *, size_t *);
+void check_chain(import_t *, char *, size_t *, size_t, size_t);
 
 /* file.io functions*/
 char *get_history_file(import_t *import);
@@ -235,11 +232,11 @@ int loopsh(char *);
 
 /* getline module*/
 ssize_t get_input(import_t *);
-int _getline(import_t *, char *, size_t *);
+int _getline(import_t *, char **, size_t *);
 void signhandler(int);
 
 /* hsh */
-int hsh(import_t *, char *);
+int hsh(import_t *, char **);
 int find_builtin(import_t *);
 void find_cmd(import_t *);
 void fork_cmd(import_t *);
