@@ -1,4 +1,4 @@
-#include "Shell.h"
+#include "shell.h"
 /**
  * is_chain - function test the current char in buffer is chain delimeter
  * @import: parameter struct

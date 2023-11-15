@@ -1,4 +1,4 @@
-#include "Shell.h"
+#include "shell.h"
 /**
  * **strtow - function that spiling string into words
  * @str: the input string

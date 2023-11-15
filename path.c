@@ -1,4 +1,4 @@
-#include "Shell.h"
+#include "shell.h"
 
 /**
  * is_cmd - function determind if the file is executable file

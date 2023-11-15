@@ -1,4 +1,4 @@
-#include "Shell.h"
+#include "shell.h"
 /**
  * _eputs - functon print an input string
  * @str: the string will be printed

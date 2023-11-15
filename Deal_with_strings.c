@@ -1,4 +1,4 @@
-#include "Shell.h"
+#include "shell.h"
 /**
  * _strlen - function that return the length of string
  * @n: the string will be chacked

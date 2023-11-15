@@ -1,4 +1,4 @@
-#include "Shell.h"
+#include "shell.h"
 
 /**
  * get_history_file - gets the history file
@@ -12,10 +12,10 @@ char *get_history_file(import_t *import)
 	dir = _getenv(import, "HOME=");
 	if (!dir)
 		return (NULL);
-	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) = 2));
+	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
 	if (!buf)
 		return (NULL);
-	buf[0] 0;
+	buf[0] = 0;
 	_strcpy(buf, dir);
 	_strcat(buf, "/");
 	_strcat(buf, HIST_FILE);
@@ -36,7 +36,7 @@ int write_history(import_t *import)
 		return (-1);
 
 	fd = open(filename, O_CREAT | O_TRUNK | O_RDWR, 0644);
-	free (filename);
+	free(filename);
 	if (fd == -1)
 		return (-1);
 	for (node = import->history; node; node = node->next)
@@ -65,7 +65,7 @@ int read_history(import_t *import)
 		return (0);
 
 	fd = open(filename, O_RDONLY);
-	free (filename);
+	free(filename);
 	if (fd == -1)
 		return (0);
 	if (!fstat(fd, &st))
@@ -80,7 +80,7 @@ int read_history(import_t *import)
 	if (rdlen <= 0)
 		return (free(buf), 0);
 	close(fd);
-	for (l =0; l < fsize; l++)
+	for (l = 0; l < fsize; l++)
 		if (buf[l] == '\n')
 		{
 			buf[l] = 0;

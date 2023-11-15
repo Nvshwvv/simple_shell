@@ -1,4 +1,4 @@
-#include "Shell.h"
+#include "shell.h"
 /**
  * interactive - function that return 1 if shell in interactive mode
  * @import: struct adress

@@ -1,4 +1,4 @@
-#include "Shell.h"
+#include "shell.h"
 /**
  * bfree - function that frees a pointer
  * @ptrs: address of the pointer will be freed

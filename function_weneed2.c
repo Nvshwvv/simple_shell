@@ -1,4 +1,4 @@
-#include "Shell.h"
+#include "shell.h"
 /**
  * _errtoi - convert str to int
  * @a: the string

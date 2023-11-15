@@ -1,8 +1,8 @@
-#include "Shell.h"
+#include "shell.h"
 /**
  * add_node - function adds node to the start of list
  * @head:pointer to the head nodes
- * @strr: str field of nodes
+ * @str: str field of nodes
  * @num:node index by a history
  * Return: size of the list
 */
@@ -33,7 +33,7 @@ list_t *add_node(list_t **head, const char *str, int num)
 /**
  * add_node_end - function adds node to the end of list
  * @head:pointer to the head nodes
- * @strr: str field of nodes
+ * @str: str field of nodes
  * @num:node index by a history
  * Return: size of the list
 */

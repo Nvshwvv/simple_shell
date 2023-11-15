@@ -1,4 +1,4 @@
-#include "Shell.h"
+#include "shell.h"
 /**
  * list_to_string - function that return array of strings
  * @head: ptr to first node

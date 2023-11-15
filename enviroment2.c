@@ -1,4 +1,4 @@
-#icnclude "Shell.h"
+#icnclude "shell.h"
 /**
  * get_environ - function that returns string array cpy of environ
  * @import: strucure containing arguments
