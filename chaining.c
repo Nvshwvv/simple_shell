@@ -12,7 +12,7 @@ int is_chain(import_t *import, char *buf, size_t *pos)
 
 	if (buf[j] == '|' && buf[j + 1] == '|')
 	{
-		buf[j] == 0;
+		buf[j] = 0;
 		j++;
 		import->cmd_buf_type = CMD_OR;
 	}
@@ -124,7 +124,7 @@ int replace_vars(import_t *import)
 					_strdup(_strchr(node->str, '=') + 1));
 			continue;
 		}
-		replace_string(&import->arg[i], _strdup(""));
+		replace_string(&import->argv[i], _strdup(""));
 	}
 	return (0);
 }

@@ -7,7 +7,7 @@
  * @name: env variable name
  * Return: value
 */
-char *_getenv(import_t *import, const char name)
+char *_getenv(import_t *import, const char *name)
 {
 	list_t *node = import->env;
 	char *n;

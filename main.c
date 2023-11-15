@@ -32,7 +32,7 @@ int main(int ac, char **av)
 				_eputchar(BUF_FLUSH);
 				exit(127);
 			}
-			return (EXIT_FAILUER);
+			return (EXIT_FAILURE);
 		}
 		import->readfd = fd;
 	}

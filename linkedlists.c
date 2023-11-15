@@ -37,7 +37,7 @@ list_t *add_node(list_t **head, const char *str, int num)
  * @num:node index by a history
  * Return: size of the list
 */
-list_t *add_node_end(list_t head, const char *str, int num)
+list_t *add_node_end(list_t **head, const char *str, int num)
 {
 	list_t *newnode, *node;
 
@@ -52,7 +52,7 @@ list_t *add_node_end(list_t head, const char *str, int num)
 	newnode->num = num;
 	if (str)
 	{
-		newnode->str = _strdup(strr);
+		newnode->str = _strdup(str);
 		if (!newnode->str)
 		{
 			free(newnode);

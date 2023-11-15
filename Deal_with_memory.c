@@ -19,7 +19,7 @@ char *_memset(char *s, char b, unsigned int n)
  * ffree - function that frees string of string
  * @ss: string of string
 */
-void ffree(char ss)
+void ffree(char **ss)
 {
 	char **e = ss;
 

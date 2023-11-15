@@ -52,15 +52,16 @@ char **strtow(char *str, char *delim)
  * @delim: the delimeter
  * Return: a pointer to an arrays of string
 */
-char **strtow2(char *str, char *delim)
+char **strtow2(char *str, char delim)
 {
 	int i, j, k, m, nw = 0;
 	char **s;
 
-	if (str == NULL  str[0] == 0)
+	if (str == NULL || str[0] == 0)
 		return (NULL);
 	for (i = 0; str[i] != '\0'; i++)
-		if (!is_delim(str[i], delim) && (is_delim(str[i + 1], delim)  !str[i + 1]))
+		if ((str[i] != delim && str[i + 1] == delim) ||
+				(str[i] != delim && !str[i + 1]) || str[i + 1] == delim)
 			nw++;
 
 	if (nw == 0)
@@ -70,10 +71,10 @@ char **strtow2(char *str, char *delim)
 		return (NULL);
 	for (i = 0, j = 0; j < nw; j++)
 	{
-		while (is_delim(str[i], delim))
+		while (str[i] == delim && str[i] != delim)
 			i++;
 		k = 0;
-	while (!is_delim(str[i + k], delim) && str[i + k])
+	while (str[i + k] != delim && str[i + k] && str[i + k] != delim)
 		k++;
 	s[j] = malloc((k + 1) * sizeof(char));
 	if (!s[j])

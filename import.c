@@ -18,14 +18,14 @@ void clear_import(import_t *import)
  * @av: arg vec
  * Return: nothing
 */
-void set_import(import_t *import, char av)
+void set_import(import_t *import, char **av)
 {
 	int l = 0;
 
 	import->fname = av[0];
 	if (import->arg)
 	{
-		import->arg = strtow(info->arg, " \t");
+		import->argv = strtow(import->arg, " \t");
 		if (!import->argv)
 		{
 			import->argv = malloc(sizeof(char *) * 2);
