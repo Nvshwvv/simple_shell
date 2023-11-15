@@ -27,7 +27,7 @@ int _eputchar(char n)
 	static int i;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (n == BUF_FLUSH  i >= WRITE_BUF_SIZE)
+	if (n == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
 		write(2, buf, i);
 		i = 0;
@@ -72,5 +72,5 @@ int _putsfd(char *strs, int fd)
 	{
 		o += _putfd(*strs++, fd);
 	}
-	return (o)
+	return (o);
 }

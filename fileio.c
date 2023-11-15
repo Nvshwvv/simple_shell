@@ -35,7 +35,7 @@ int write_history(import_t *import)
 	if (!filename)
 		return (-1);
 
-	fd = open(filename, O_CREAT | O_TRUNK | O_RDWR, 0644);
+	fd = open(filename, O_CREAT | O_TRUNC | O_RDWR, 0644);
 	free(filename);
 	if (fd == -1)
 		return (-1);
@@ -93,7 +93,7 @@ int read_history(import_t *import)
 	import->histcount = linecount;
 	while (import->histcount-- >= HIST_MAX)
 		delete_node_at_index(&(import->history), 0);
-	remember_history(import);
+	renumber_history(import);
 	return (import->histcount);
 }
 /**

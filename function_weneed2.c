@@ -120,7 +120,7 @@ void remove_comment(char *buf)
 {
 	int l;
 
-	for (l = 0; buf[l] != '\0' l++)
+	for (l = 0; buf[l] != '\0'; l++)
 		if (buf[l] == '#' && (!l || buf[l - 1] == ' '))
 		{
 			buf[l] = '\0';

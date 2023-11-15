@@ -122,7 +122,7 @@ char *starts_with(const char *, const char *);
 char *_strcat(char *, char *);
 
 /* seconed file */
-char *_srtcpy(char *, char *);
+char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
@@ -152,7 +152,7 @@ int _isalpha(int);
 int _atoi(char *);
 
 /* the seconed file */
-int _erratoi(char *);
+int _errtoi(char *);
 void print_error(import_t *, char *);
 int print_d(int, int);
 char *convert_number(long int, int, int);
@@ -168,7 +168,7 @@ void free_list(list_t **);
 
 /* the second file */
 size_t list_len(const list_t *);
-char **list_to_strings(list_t *);
+char **list_to_string(list_t *);
 size_t print_list(const list_t *);
 list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
@@ -177,7 +177,7 @@ ssize_t get_node_index(list_t *, list_t *);
 /* the error file*/
 void _eputs(char *);
 int _eputchar(char);
-int _putfd(char n, char fd);
+int _putfd(char ch, int fd);
 int _putsfd(char *strs, int fd);
 
 /* import struct function */
@@ -194,7 +194,7 @@ int _myunsetenv(import_t *);
 int populate_env_list(import_t *);
 
 /* the seconed file */
-char get_environ(import_t *);
+char **get_environ(import_t *);
 int _unsetenv(import_t *, char *);
 int _setenv(import_t *, char *, char *);
 

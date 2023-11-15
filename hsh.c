@@ -50,7 +50,7 @@ int hsh(import_t *import, char **av)
 int find_builtin(import_t *import)
 {
 	int n, built_in_ret = -1;
-	builtin_table builtintbl[] = {
+	biltin_table builtintbl[] = {
 	{"exit", _myexit},
 	{"env", _myenv},
 	{"help", _myhelp},
@@ -101,8 +101,8 @@ void find_cmd(import_t *import)
 	}
 	else
 	{
-		if ((interactive(import) || _getenv(import, "PATH=") /
-					|| import->argv[0][0] == '/') && is_cmd(import, import->argv[0]))
+		if ((interactive(import) || _getenv(import, "PATH=")
+		|| import->argv[0][0] == '/') && is_cmd(import, import->argv[0]))
 			fork_cmd(import);
 		else if (*(import->arg) != '\n')
 		{

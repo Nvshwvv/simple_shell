@@ -1,4 +1,4 @@
-#icnclude "shell.h"
+#include "shell.h"
 /**
  * get_environ - function that returns string array cpy of environ
  * @import: strucure containing arguments
@@ -8,7 +8,7 @@ char **get_environ(import_t *import)
 {
 	if (!import->environ || import->env_changed)
 	{
-		import->environ = list_to_strings(import->env);
+		import->environ = list_to_string(import->env);
 		import->env_changed = 0;
 	}
 	return (import->environ);

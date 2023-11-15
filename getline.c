@@ -16,7 +16,7 @@ ssize_t input_buf(import_t *import, char **buf, size_t *len)
 	{
 		free(*buf);
 		*buf = NULL;
-		signal(SIGNT, signhandler);
+		signal(SIGINT, signhandler);
 #if USE_GETLINE
 		n = getline(buf, &len_p, stdin);
 #else
@@ -73,7 +73,7 @@ ssize_t get_input(import_t *import)
 		if (i >= len)
 		{
 			i = len = 0;
-			import->cmd_buf_type = CMD_NORM
+			import->cmd_buf_type = CMD_NORM;
 		}
 		*buf_p = p;
 		return (_strlen(p));
@@ -89,7 +89,7 @@ ssize_t get_input(import_t *import)
  * @n: size
  * Return: the size
 */
-ssize_t read_buf(import_t *import, char *buf, ssize *n)
+ssize_t read_buf(import_t *import, char *buf, size_t *n)
 {
 	ssize_t p = 0;
 
@@ -152,7 +152,7 @@ int _getline(import_t *import, char **ptr, size_t *length)
  * @sign: the sign num
  * Return: nothing
 */
-void signhandler(__attribute__9((unused))int sign)
+void signhandler(__attribute__((unused))int sign)
 {
 	_puts("\n");
 	_puts("$ ");

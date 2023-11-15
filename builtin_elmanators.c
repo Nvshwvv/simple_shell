@@ -56,14 +56,14 @@ int _mycd(import_t *import)
 			return (1);
 		}
 		_puts(_getenv(import, "OLDPWD=")), _putchar('\n');
-		chdir_ret = chdir((dir = _getenv(import, "OLDPWD=")), ? dir : "/");
+		chdir_ret = chdir((dir = _getenv(import, "OLDPWD=")) ? dir : "/");
 	}
 	else
 		chdir_ret = chdir(import->argv[1]);
 	if (chdir_ret == -1)
 	{
 		print_error(import, "can't cd to");
-		_eputs(import->argv[1], _eputchar('\n'));
+		_eputs(import->argv[1]), _eputchar('\n');
 	}
 	else
 	{
